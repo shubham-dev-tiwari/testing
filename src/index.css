@@ -778,219 +778,123 @@ input, textarea, select {
   cursor: grabbing !important;
 }
 
+/* Safari Browser Specific Fixes */
 
-/* iOS-Specific Optimizations - Add to your existing CSS */
-
-/* iOS viewport and rendering fixes */
-html {
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  /* Force hardware acceleration on iOS */
-  transform: translate3d(0,0,0);
-}
-
-body {
-  /* iOS-specific font rendering */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Prevent iOS zoom on input focus */
-  -webkit-text-size-adjust: 100%;
-  /* Better scrolling on iOS */
-  -webkit-overflow-scrolling: touch;
-  /* Force repaint for better colors on iOS */
-  transform: translateZ(0);
-}
-
-/* iOS Safari specific fixes */
-@supports (-webkit-touch-callout: none) {
-  /* This targets iOS Safari specifically */
-  
-  .page-container {
-    /* Use iOS safe viewport height */
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
+/* Safari gradient and animation fix */
+@media not all and (min-resolution:.001dpcm) { 
+  @supports (-webkit-appearance:none) {
+    body {
+      /* Safari-compatible background */
+      background: linear-gradient(135deg, 
+        #94e2d5 0%,     /* Mint-aqua */
+        #a8f5e8 15%,    /* Seafoam */
+        #87ceeb 30%,    /* Sky-blue */
+        #3498db 45%,    /* Ocean-blue */
+        #2980b9 60%,    /* Royal-blue */
+        #1a1a2e 75%,    /* Navy */
+        #16213e 90%,    /* Dark navy */
+        #0f0f23 100%    /* Deep navy */
+      ) !important;
+      
+      background-size: 400% 400% !important;
+      background-attachment: fixed !important;
+      
+      /* Safari-specific animation */
+      -webkit-animation: psychologyFlow 25s ease infinite !important;
+      animation: psychologyFlow 25s ease infinite !important;
+    }
     
-    /* iOS-specific padding adjustments */
-    padding-top: env(safe-area-inset-top, 3.5rem);
-    padding-bottom: env(safe-area-inset-bottom, 2rem);
-    padding-left: env(safe-area-inset-left, 1rem);
-    padding-right: env(safe-area-inset-right, 1rem);
-  }
-  
-  /* Enhanced text contrast for iOS */
-  .text-hero, .text-page-title, .text-section-title {
-    color: #ffffff !important;
-    /* Stronger shadows for iOS */
-    text-shadow: 
-      0 2px 4px rgba(0, 0, 0, 0.8),
-      0 4px 8px rgba(0, 0, 0, 0.4),
-      0 0 20px rgba(148, 226, 213, 0.6) !important;
-    /* Force font weight on iOS */
-    -webkit-font-smoothing: antialiased;
-    font-weight: 800 !important;
-  }
-  
-  /* Better text rendering on iOS */
-  .text-body, .text-secondary {
-    color: rgba(255, 255, 255, 0.98) !important;
-    text-shadow: 
-      0 1px 3px rgba(0, 0, 0, 0.6),
-      0 2px 6px rgba(0, 0, 0, 0.3) !important;
-    -webkit-font-smoothing: antialiased;
-  }
-  
-  /* iOS gradient text fixes */
-  .text-gradient-primary,
-  .text-gradient-innovation,
-  .text-gradient-trust {
-    /* Fallback colors for iOS */
-    color: #ffffff;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    /* Force better rendering */
-    will-change: background-position;
-    transform: translateZ(0);
+    /* Safari glass card fallback */
+    .glass-card {
+      background: rgba(148, 226, 213, 0.25) !important;
+      border: 2px solid rgba(148, 226, 213, 0.4) !important;
+      
+      /* Safari backdrop-filter with fallback */
+      -webkit-backdrop-filter: blur(20px) saturate(1.2) !important;
+      backdrop-filter: blur(20px) saturate(1.2) !important;
+      
+      /* Safari shadow fix */
+      -webkit-box-shadow: 
+        0 8px 32px rgba(148, 226, 213, 0.15),
+        0 2px 8px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+      box-shadow: 
+        0 8px 32px rgba(148, 226, 213, 0.15),
+        0 2px 8px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    /* Safari text rendering fix */
+    .text-hero, .text-page-title, .text-section-title {
+      -webkit-font-smoothing: antialiased !important;
+      -webkit-text-stroke: 0.01em transparent !important;
+    }
   }
 }
 
-/* iOS Mobile Safari specific */
-@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
-  /* iPhone specific optimizations */
-  
+/* Safari-only CSS using -webkit-appearance */
+@supports (-webkit-appearance: none) and (not (appearance: none)) {
   body {
-    background: linear-gradient(135deg, 
-      #94e2d5 0%,     /* Brighter colors for iOS */
-      #a8f5e8 15%,
-      #87ceeb 30%,
-      #3498db 45%,
-      #2980b9 60%,
-      #1a1a2e 75%,    /* Darker contrast */
-      #16213e 90%,
-      #0f0f23 100%
+    /* Force Safari to render gradient properly */
+    background: -webkit-linear-gradient(135deg, 
+      #94e2d5 0%, #a8f5e8 15%, #87ceeb 30%, 
+      #3498db 45%, #2980b9 60%, #1a1a2e 75%, 
+      #16213e 90%, #0f0f23 100%
     ) !important;
-    background-attachment: fixed;
-    /* Prevent iOS background issues */
-    -webkit-background-size: 400% 400%;
-    background-size: 400% 400%;
+    
+    /* Safari animation keyframes fix */
+    -webkit-animation-name: psychologyFlow !important;
+    -webkit-animation-duration: 25s !important;
+    -webkit-animation-timing-function: ease !important;
+    -webkit-animation-iteration-count: infinite !important;
   }
   
-  /* iOS navigation fixes */
-  .navigation-container {
-    background: rgba(148, 226, 213, 0.15) !important;
-    backdrop-filter: saturate(1.8) blur(20px);
-    -webkit-backdrop-filter: saturate(1.8) blur(20px);
-    border-bottom: 1px solid rgba(148, 226, 213, 0.4);
-  }
-  
-  /* Better glass cards on iOS */
   .glass-card {
-    background: linear-gradient(135deg, 
-      rgba(148, 226, 213, 0.35) 0%,
-      rgba(255, 255, 255, 0.2) 30%,
-      rgba(52, 152, 219, 0.25) 70%,
-      rgba(24, 24, 37, 0.15) 100%
-    ) !important;
-    backdrop-filter: saturate(1.4) blur(25px);
-    -webkit-backdrop-filter: saturate(1.4) blur(25px);
-    border: 1px solid rgba(148, 226, 213, 0.5);
-  }
-  
-  /* iOS button improvements */
-  button, .btn-responsive {
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
-    transform: translateZ(0);
-  }
-  
-  /* Better profile image rendering */
-  .profile-image, img {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: transform;
+    /* Safari glass effect fallback */
+    background: rgba(148, 226, 213, 0.3) !important;
+    border: 2px solid rgba(148, 226, 213, 0.5) !important;
+    
+    /* Enhanced Safari backdrop-filter */
+    -webkit-backdrop-filter: blur(20px) saturate(150%) brightness(110%) !important;
   }
 }
 
-/* iPad specific optimizations */
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
-  .page-container {
-    padding-top: 4.5rem;
+/* Safari WebKit keyframes */
+@-webkit-keyframes psychologyFlow {
+  0% { 
+    background: -webkit-linear-gradient(135deg, #94e2d5 0%, #a8f5e8 25%, #87ceeb 50%, #3498db 75%, #2980b9 100%);
+    background-position: 0% 50%;
   }
-  
-  .text-hero {
-    font-size: 3.5rem !important;
-    line-height: 1.1 !important;
+  20% { 
+    background-position: 100% 30%;
   }
-}
-
-/* iOS Dark mode specific */
-@media (prefers-color-scheme: dark) and (-webkit-min-device-pixel-ratio: 2) {
-  body {
-    background: linear-gradient(135deg, 
-      #2c5f5a 0%,
-      #3a6b66 15%,
-      #4a7c87 30%,
-      #1e3a8a 45%,
-      #1e293b 60%,
-      #0f0f23 75%,
-      #000000 100%
-    ) !important;
+  40% { 
+    background-position: 50% 100%;
+  }
+  60% { 
+    background-position: 0% 70%;
+  }
+  80% { 
+    background-position: 80% 20%;
+  }
+  100% { 
+    background: -webkit-linear-gradient(135deg, #94e2d5 0%, #a8f5e8 25%, #87ceeb 50%, #3498db 75%, #2980b9 100%);
+    background-position: 0% 50%;
   }
 }
 
-/* iOS font loading optimization */
-@font-face {
-  font-family: 'Inter';
-  font-display: swap;
-  src: local('Inter'), local('Inter-Regular'),
-       url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuOKfAZ9hiA.woff2') format('woff2');
-  font-weight: 400;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+/* Alternative Safari fix - if above doesn't work */
+.safari-fallback {
+  background: #94e2d5 !important;
+  background: -webkit-linear-gradient(top left, #94e2d5, #3498db, #2980b9, #1a1a2e) !important;
 }
 
-/* iOS viewport meta enhancement */
-/* Add this to your HTML head */
+/* Apply Safari fallback class to body via JavaScript */
+/* Add this script tag to your HTML head: */
 /*
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#94e2d5">
+<script>
+if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+  document.body.classList.add('safari-fallback');
+}
+</script>
 */
-/* iOS-specific utility classes */
-.ios-text-bright {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-.ios-name-gradient {
-  -webkit-font-smoothing: antialiased;
-  will-change: background-position;
-  transform: translateZ(0);
-}
-
-/* iOS button enhancement */
-.ios-button {
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-/* iOS safe area handling */
-.ios-safe-container {
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
-}
-
-/* iOS backdrop filter fallback */
-@supports not (backdrop-filter: blur(20px)) {
-  .glass-card {
-    background: rgba(148, 226, 213, 0.25) !important;
-    border: 2px solid rgba(148, 226, 213, 0.4);
-  }
-}
