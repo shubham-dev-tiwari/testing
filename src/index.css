@@ -3,6 +3,7 @@
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
+
 @layer base {
   :root {
     /* Color Psychology Palette - Solid Colors */
@@ -14,6 +15,7 @@
     --navy-light: #2c2f3e;          /* Light navy */
     --purple-blend: #6b4d85;        /* Purple-navy blend */
   }
+
 
   * {
     margin: 0;
@@ -63,6 +65,7 @@
     width: 100%;
   }
 
+
   /* Solid overlay for better text readability */
   body::before {
     content: '';
@@ -80,6 +83,7 @@
     z-index: 1;
   }
 }
+
 
 @layer components {
   /* Responsive container system */
@@ -123,6 +127,7 @@
     @apply lg:space-y-10 xl:space-y-12;
   }
 
+
   /* Solid glass morphism - no transparency */
   .glass-card {
     background: linear-gradient(135deg, 
@@ -152,6 +157,7 @@
       inset 0 1px 0 #ffffff;
   }
 
+
   .glass-card:hover {
     background: linear-gradient(135deg, 
       var(--purple-light) 0%,     /* Light purple hover */
@@ -169,6 +175,7 @@
       inset 0 1px 0 #ffffff;
   }
 
+
   /* Responsive grid systems */
   .grid-responsive-2 {
     display: grid;
@@ -184,6 +191,7 @@
     place-items: center;
   }
 
+
   .grid-responsive-3 {
     display: grid;
     gap: 1rem;
@@ -197,6 +205,7 @@
     
     place-items: center;
   }
+
 
   .grid-responsive-4 {
     display: grid;
@@ -212,6 +221,7 @@
     place-items: center;
   }
 
+
   .grid-responsive-5 {
     display: grid;
     gap: 0.75rem;
@@ -225,6 +235,7 @@
     
     place-items: center;
   }
+
 
   /* Responsive typography */
   .text-hero {
@@ -251,6 +262,7 @@
       0 0 20px var(--purple-main);
   }
 
+
   .text-page-title {
     font-weight: 700;
     line-height: 1.2;
@@ -271,6 +283,7 @@
       0 0 15px var(--purple-main);
   }
 
+
   .text-section-title {
     font-weight: 600;
     line-height: 1.3;
@@ -288,6 +301,7 @@
     
     text-shadow: 1px 1px 3px #000000;
   }
+
 
   /* Trust-building accent text */
   .text-accent-trust {
@@ -309,6 +323,7 @@
       0 0 10px var(--purple-main);
   }
 
+
   /* Innovation-focused accent text */
   .text-accent-innovation {
     color: var(--purple-light);
@@ -329,6 +344,7 @@
       0 0 10px var(--purple-light);
   }
 
+
   /* Body text - solid colors only */
   .text-body {
     color: #ffffff;
@@ -348,6 +364,7 @@
     text-shadow: 1px 1px 2px #000000;
   }
 
+
   /* Secondary text - solid colors only */
   .text-secondary {
     color: #e6e6e6;
@@ -365,6 +382,7 @@
     @apply md:text-base;
   }
 
+
   /* Gradient text effects with purple theme */
   .text-gradient-primary {
     background: linear-gradient(135deg, 
@@ -380,6 +398,7 @@
     animation: gradientText 3s ease infinite;
   }
 
+
   .text-gradient-innovation {
     background: linear-gradient(135deg, 
       var(--purple-main) 0%, 
@@ -392,6 +411,7 @@
     background-size: 200% 200%;
     animation: gradientText 4s ease infinite;
   }
+
 
   .text-gradient-trust {
     background: linear-gradient(135deg, 
@@ -406,6 +426,7 @@
     animation: gradientText 3.5s ease infinite;
   }
 
+
   /* Responsive button groups */
   .button-group {
     display: flex;
@@ -418,6 +439,7 @@
     /* Tablet: horizontal layout */
     @apply sm:flex-row sm:gap-4;
   }
+
 
   .button-group .btn-responsive {
     width: 100%;
@@ -436,6 +458,7 @@
     color: #ffffff;
   }
 
+
   /* Responsive spacing utilities */
   .section-spacing {
     padding-top: 2rem;
@@ -448,6 +471,7 @@
     @apply lg:py-20 xl:py-24;
   }
 
+
   .content-spacing {
     margin-bottom: 1.5rem;
     
@@ -458,12 +482,14 @@
     @apply lg:mb-10 xl:mb-12;
   }
 
+
   /* Spacing utilities */
   .mb-2 { margin-bottom: 0.5rem; }
   .mb-4 { margin-bottom: 1rem; }
   .mb-6 { margin-bottom: 1.5rem; }
   .mb-8 { margin-bottom: 2rem; }
 }
+
 
 /* Enhanced loading screen */
 .loading-screen {
@@ -490,11 +516,13 @@
   padding: 2rem;
 }
 
+
 .loading-screen.hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
+
 
 .loading-spinner {
   width: 50px;
@@ -508,6 +536,7 @@
   /* Tablet */
   @apply sm:w-16 sm:h-16 sm:border-[6px] sm:border-t-[6px];
 }
+
 
 .loading-text {
   color: #ffffff;
@@ -525,6 +554,7 @@
   /* Desktop */
   @apply lg:text-3xl xl:text-4xl;
 }
+
 
 /* Custom loader with purple theme */
 .custom-loader {
@@ -559,6 +589,7 @@
   filter: drop-shadow(0 0 20px var(--purple-main));
 }
 
+
 .custom-loader::before {
   content: "";
   position: absolute;
@@ -575,6 +606,7 @@
   filter: blur(8px);
   animation: centerPulse 2s ease-in-out infinite;
 }
+
 
 /* Stats inline for better mobile layout */
 .stats-inline {
@@ -598,6 +630,7 @@
   border: 2px solid var(--purple-light);
 }
 
+
 .stat-inline-item {
   text-align: center;
   min-width: 100px;
@@ -608,6 +641,7 @@
   /* Desktop */
   @apply lg:min-w-40;
 }
+
 
 .stat-inline-number {
   display: block;
@@ -626,6 +660,7 @@
   @apply lg:text-4xl;
 }
 
+
 .stat-inline-label {
   display: block;
   color: #e6e6e6;
@@ -640,6 +675,7 @@
   /* Desktop */
   @apply lg:text-base;
 }
+
 
 /* Enhanced keyframe animations */
 @keyframes psychologyFlow {
@@ -663,6 +699,7 @@
   }
 }
 
+
 @keyframes gradientText {
   0%, 100% { 
     background-position: 0% 50%;
@@ -671,6 +708,7 @@
     background-position: 100% 50%;
   }
 }
+
 
 @keyframes trustPulse {
   0%, 100% { 
@@ -685,10 +723,12 @@
   }
 }
 
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
 
 @keyframes float {
   0%, 100% { 
@@ -699,11 +739,13 @@
   }
 }
 
+
 @keyframes customLoader {
   to { 
     rotate: 1turn;
   }
 }
+
 
 @keyframes centerPulse {
   0%, 100% {
@@ -716,15 +758,18 @@
   }
 }
 
+
 @keyframes gradient-move {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
+
 .animate-gradient {
   animation: gradient-move 6s ease infinite;
 }
+
 
 /* Mobile-specific optimizations (iPhone, Android) */
 @media (max-width: 640px) {
@@ -752,6 +797,7 @@
   }
 }
 
+
 /* Landscape mobile adjustments */
 @media (max-width: 896px) and (orientation: landscape) {
   .page-container {
@@ -768,6 +814,7 @@
     font-size: 2rem;
   }
 }
+
 
 /* Tablet optimizations (iPad, Android tablets) */
 @media (min-width: 641px) and (max-width: 1024px) {
@@ -786,6 +833,7 @@
   }
 }
 
+
 /* Desktop enhancements (Mac, Windows, Linux) */
 @media (min-width: 1025px) {
   .content-section {
@@ -803,6 +851,7 @@
   }
 }
 
+
 /* 4K and ultra-wide display optimizations */
 @media (min-width: 1920px) {
   .page-container {
@@ -815,6 +864,7 @@
   }
 }
 
+
 /* High DPI display optimizations (Retina, etc.) */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .glass-card {
@@ -826,6 +876,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
 
 /* iOS-specific fixes */
 @supports (-webkit-touch-callout: none) {
@@ -840,6 +891,7 @@
   }
 }
 
+
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   .glass-card {
@@ -853,6 +905,7 @@
   }
 }
 
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -865,6 +918,7 @@
     transform: none;
   }
 }
+
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
@@ -889,6 +943,7 @@
   }
 }
 
+
 /* Print styles */
 @media print {
   body {
@@ -903,24 +958,135 @@
   }
 }
 
+
 /* Cursor styles */
 * {
   cursor: auto !important;
 }
+
 
 /* Specific cursor types for better UX */
 button, a, [role="button"], .cursor-pointer {
   cursor: pointer !important;
 }
 
+
 input, textarea, select {
   cursor: text !important;
 }
+
 
 .cursor-grab {
   cursor: grab !important;
 }
 
+
 .cursor-grabbing {
   cursor: grabbing !important;
+}
+/* Enhanced loading screen */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, 
+    var(--mint-aqua) 0%, 
+    var(--ocean-blue) 30%,
+    var(--royal-blue) 60%,
+    var(--deep-navy) 100%
+  );
+  background-size: 400% 400%;
+  animation: psychologyFlow 8s ease infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease-out;
+  padding: 2rem;
+}
+
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+/* Custom loader with animation */
+.custom-loader {
+  height: 80px;
+  aspect-ratio: 1;
+  position: relative;
+  mask: 
+    radial-gradient(transparent 47%, #000 48% 71%, transparent 72%) exclude,
+    conic-gradient(#000 0 0) no-clip;
+  background: conic-gradient(
+    from 0deg,
+    var(--mint-aqua) 0deg,
+    var(--soft-coral) 60deg,
+    var(--pale-gold) 120deg,
+    var(--ocean-blue) 180deg,
+    var(--royal-blue) 240deg,
+    var(--mint-aqua) 300deg,
+    var(--mint-aqua) 360deg
+  );
+  animation: customLoader 1.5s linear infinite;
+  filter: drop-shadow(0 0 20px rgba(148, 226, 213, 0.6));
+}
+
+
+.custom-loader::before {
+  content: "";
+  position: absolute;
+  inset: 0 35% 70%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(148, 226, 213, 0.8) 50%,
+    rgba(52, 152, 219, 0.6) 100%
+  );
+  filter: blur(8px);
+  animation: centerPulse 2s ease-in-out infinite;
+}
+
+
+.loading-text {
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(148, 226, 213, 0.4);
+  /* responsive sizes */
+  font-size: 1.5rem;
+}
+@media (max-width: 640px) {
+  .custom-loader { height: 60px; }
+  .loading-text { font-size: 1.2rem; }
+}
+@media (min-width: 1024px) {
+  .custom-loader { height: 100px; }
+  .loading-text { font-size: 2rem; }
+}
+/* Performance & accessibility */
+@keyframes customLoader { to { transform: rotate(1turn); } }
+@keyframes centerPulse {
+  0%,100%{transform:scale(1);opacity:0.8}
+  50%{transform:scale(1.2);opacity:1}
+}
+@media (prefers-reduced-motion: reduce) {
+  .custom-loader { animation-duration: 3s; }
+  .custom-loader::before { animation: none; }
+}
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .custom-loader::before {
+    background: radial-gradient(circle,
+      rgba(148, 226, 213, 0.9) 0%,
+      rgba(52, 152, 219, 0.8) 50%,
+      rgba(255, 255, 255, 0.6) 100%
+    );
+  }
 }
