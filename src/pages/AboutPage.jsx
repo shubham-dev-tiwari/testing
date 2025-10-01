@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion  } from 'framer-motion';
+
 
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
@@ -132,7 +133,7 @@ const AboutPage = () => {
     <div className="page-container">
       <div className="content-section">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 10, y: 500 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="space-y-16"

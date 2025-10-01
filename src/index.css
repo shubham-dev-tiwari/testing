@@ -3,20 +3,17 @@
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
-
 @layer base {
   :root {
-    /* Color Psychology Palette */
-    --mint-aqua: #94e2d5;           /* Trust, calmness, clarity */
-    --soft-coral: #ff9f8a;         /* Creativity, warmth, energy */
-    --pale-gold: #f4d03f;          /* Success, luxury, optimism */
-    --deep-navy: #181825;          /* Sophistication, professionalism */
-    --ocean-blue: #3498db;         /* Trust, reliability, stability */
-    --seafoam: #a8f5e8;           /* Freshness, purity, innovation */
-    --sky-blue: #87ceeb;          /* Openness, freedom, creativity */
-    --royal-blue: #2980b9;        /* Authority, confidence, depth */
+    /* Color Psychology Palette - Solid Colors */
+    --purple-main: #9273c1;         /* Primary purple */
+    --deep-navy: #181825;           /* Sophistication, professionalism */
+    --purple-light: #b098d9;        /* Light purple */
+    --purple-dark: #7a5ba8;         /* Dark purple */
+    --purple-mid: #8561b3;          /* Mid purple */
+    --navy-light: #2c2f3e;          /* Light navy */
+    --purple-blend: #6b4d85;        /* Purple-navy blend */
   }
-
 
   * {
     margin: 0;
@@ -26,31 +23,47 @@
   
   html {
     scroll-behavior: smooth;
+    /* Cross-device scrolling support */
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
   }
   
   body {
     font-family: 'Inter', system-ui, sans-serif;
-    /* Enhanced psychology-based gradient animation */
+    /* Purple to Deep-Navy gradient animation */
     background: linear-gradient(135deg, 
-      var(--mint-aqua) 0%,     /* Start: Trust & Calmness */
-      var(--seafoam) 15%,      /* Freshness & Purity */
-      var(--sky-blue) 30%,     /* Openness & Creativity */
-      var(--ocean-blue) 45%,   /* Trust & Reliability */
-      var(--royal-blue) 60%,   /* Authority & Confidence */
-      var(--deep-navy) 75%,    /* Sophistication */
-      #0f0f23 90%,             /* Deep Mystery */
-      var(--deep-navy) 100%    /* End: Professional Depth */
+      var(--purple-main) 0%,       /* Start: Purple */
+      var(--purple-light) 15%,     /* Light purple */
+      var(--purple-mid) 30%,       /* Mid purple */
+      var(--purple-dark) 45%,      /* Dark purple */
+      var(--purple-blend) 60%,     /* Purple-navy blend */
+      var(--navy-light) 75%,       /* Light navy */
+      #1f2030 90%,                 /* Navy blend */
+      var(--deep-navy) 100%        /* End: Deep navy */
     );
     background-size: 400% 400%;
     animation: psychologyFlow 25s ease infinite;
     min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
     color: #ffffff;
+    
+    /* Cross-device scrolling */
     overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    
+    /* iOS fixes */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    
     position: relative;
+    width: 100%;
   }
 
-
-  /* Subtle overlay for better text readability */
+  /* Solid overlay for better text readability */
   body::before {
     content: '';
     position: fixed;
@@ -60,47 +73,70 @@
     bottom: 0;
     background: radial-gradient(
       ellipse at center,
-      rgba(0, 0, 0, 0.1) 0%,
-      rgba(0, 0, 0, 0.3) 100%
+      #000000 0%,
+      #1a1a2e 100%
     );
     pointer-events: none;
     z-index: 1;
   }
 }
 
-
 @layer components {
-  /* Perfect center alignment system */
+  /* Responsive container system */
   .page-container {
-    @apply min-h-screen flex flex-col items-center justify-center px-4 py-20;
-    @apply sm:px-6 md:px-8 lg:px-12;
-    @apply py-16 sm:py-20 md:py-24 lg:py-28;
+    width: 100%;
     position: relative;
     z-index: 2;
+    
+    /* Mobile-first approach */
+    padding: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    
+    /* Enable scrolling on all devices */
+    overflow: visible;
+    -webkit-overflow-scrolling: touch;
+    
+    /* Tablet adjustments */
+    @apply sm:px-6 md:px-8;
+    @apply sm:pt-6 md:pt-8;
+    
+    /* Desktop adjustments */
+    @apply lg:px-12 lg:pt-12;
+    @apply xl:px-16 xl:pt-16;
   }
   
   .content-section {
-    @apply w-full max-w-7xl mx-auto text-center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    @apply sm:gap-8 md:gap-10 lg:gap-12;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto 3rem auto;
+    padding: 2rem 0;
+    text-align: center;
+    
+    /* Mobile spacing */
+    @apply space-y-4;
+    
+    /* Tablet spacing */
+    @apply sm:space-y-6 md:space-y-8;
+    
+    /* Desktop spacing */
+    @apply lg:space-y-10 xl:space-y-12;
   }
 
-
-  /* Enhanced glass morphism with perfect alignment */
+  /* Solid glass morphism - no transparency */
   .glass-card {
     background: linear-gradient(135deg, 
-      rgba(148, 226, 213, 0.25) 0%,   /* Mint-aqua: Trust */
-      rgba(255, 255, 255, 0.15) 30%,  /* Clean overlay */
-      rgba(52, 152, 219, 0.2) 70%,    /* Ocean blue: Reliability */
-      rgba(24, 24, 37, 0.1) 100%      /* Depth */
+      var(--purple-main) 0%,      /* Purple start */
+      #ffffff 30%,                /* White blend */
+      var(--purple-mid) 70%,      /* Purple mid */
+      var(--deep-navy) 100%       /* Navy end */
     );
-    backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid rgba(148, 226, 213, 0.4);
-    @apply rounded-2xl p-4 transition-all duration-500;
+    border: 2px solid var(--purple-main);
+    border-radius: 1rem;
+    transition: all 0.5s ease;
+    
+    /* Responsive padding */
+    padding: 1rem;
     @apply sm:p-6 md:p-8;
     
     /* Perfect text alignment */
@@ -109,145 +145,233 @@
     align-items: center;
     text-align: center;
     
-    /* Enhanced shadows for depth */
+    /* Solid shadows */
     box-shadow: 
-      0 8px 32px rgba(148, 226, 213, 0.15),
-      0 2px 8px rgba(255, 255, 255, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      0 8px 32px #1a1a2e,
+      0 2px 8px #2c2f3e,
+      inset 0 1px 0 #ffffff;
   }
-
 
   .glass-card:hover {
     background: linear-gradient(135deg, 
-      rgba(148, 226, 213, 0.35) 0%, 
-      rgba(255, 255, 255, 0.25) 30%,
-      rgba(52, 152, 219, 0.3) 70%,
-      rgba(255, 159, 138, 0.1) 100%
+      var(--purple-light) 0%,     /* Light purple hover */
+      #ffffff 30%,                /* White blend */
+      var(--purple-dark) 70%,     /* Dark purple */
+      var(--navy-light) 100%      /* Light navy */
     );
-    border: 1px solid rgba(148, 226, 213, 0.6);
-    transform: translateY(-8px) scale(1.02);
+    border: 2px solid var(--purple-light);
+    transform: translateY(-4px) scale(1.01);
+    
+    /* Enhanced shadows */
     box-shadow: 
-      0 16px 48px rgba(148, 226, 213, 0.25),
-      0 4px 16px rgba(255, 255, 255, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      0 16px 48px #0f0f1a,
+      0 4px 16px #1a1a2e,
+      inset 0 1px 0 #ffffff;
   }
 
-
-  /* Perfect grid alignment */
+  /* Responsive grid systems */
   .grid-responsive-2 {
-    @apply grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    
+    /* Tablet: 2 columns */
+    @apply sm:grid-cols-2 sm:gap-6;
+    
+    /* Desktop: maintain 2 columns with larger gap */
+    @apply lg:gap-8;
+    
     place-items: center;
   }
-
 
   .grid-responsive-3 {
-    @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:gap-8 lg:gap-10;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    
+    /* Tablet: 2 columns */
+    @apply sm:grid-cols-2 sm:gap-6;
+    
+    /* Desktop: 3 columns */
+    @apply lg:grid-cols-3 lg:gap-8 xl:gap-10;
+    
     place-items: center;
   }
-
 
   .grid-responsive-4 {
-    @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 sm:gap-8 lg:gap-10;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    
+    /* Tablet: 2 columns */
+    @apply sm:grid-cols-2 sm:gap-6;
+    
+    /* Desktop: 4 columns */
+    @apply lg:grid-cols-4 lg:gap-8 xl:gap-10;
+    
     place-items: center;
   }
-
 
   .grid-responsive-5 {
-    @apply grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-6 md:gap-8;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    
+    /* Tablet: 3 columns */
+    @apply sm:grid-cols-3 sm:gap-4;
+    
+    /* Desktop: 5 columns */
+    @apply md:grid-cols-4 lg:grid-cols-5 lg:gap-6 xl:gap-8;
+    
     place-items: center;
   }
 
-
-  /* Color psychology typography */
+  /* Responsive typography */
   .text-hero {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
     text-align: center;
-    
-    /* High contrast for readability */
     color: #ffffff;
+    
+    /* Mobile */
+    font-size: 2.25rem; /* 36px */
+    
+    /* Tablet */
+    @apply sm:text-4xl md:text-5xl;
+    
+    /* Desktop */
+    @apply lg:text-6xl xl:text-7xl;
+    
+    /* 4K+ screens */
+    @apply 2xl:text-8xl;
+    
     text-shadow: 
-      2px 2px 4px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(148, 226, 213, 0.3);
+      2px 2px 4px #000000,
+      0 0 20px var(--purple-main);
   }
 
-
   .text-page-title {
-    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
     font-weight: 700;
     line-height: 1.2;
     text-align: center;
     color: #ffffff;
+    
+    /* Mobile */
+    font-size: 1.875rem; /* 30px */
+    
+    /* Tablet */
+    @apply sm:text-3xl md:text-4xl;
+    
+    /* Desktop */
+    @apply lg:text-5xl xl:text-6xl;
+    
     text-shadow: 
-      2px 2px 4px rgba(0, 0, 0, 0.3),
-      0 0 15px rgba(148, 226, 213, 0.2);
+      2px 2px 4px #000000,
+      0 0 15px var(--purple-main);
   }
 
-
   .text-section-title {
-    @apply text-2xl sm:text-3xl md:text-4xl;
     font-weight: 600;
     line-height: 1.3;
     text-align: center;
     color: #ffffff;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    
+    /* Mobile */
+    font-size: 1.5rem; /* 24px */
+    
+    /* Tablet */
+    @apply sm:text-2xl md:text-3xl;
+    
+    /* Desktop */
+    @apply lg:text-4xl;
+    
+    text-shadow: 1px 1px 3px #000000;
   }
-
 
   /* Trust-building accent text */
   .text-accent-trust {
-    @apply text-lg sm:text-xl md:text-2xl;
-    color: var(--mint-aqua);
+    color: var(--purple-main);
     font-weight: 600;
     text-align: center;
+    
+    /* Mobile */
+    font-size: 1.125rem; /* 18px */
+    
+    /* Tablet */
+    @apply sm:text-lg md:text-xl;
+    
+    /* Desktop */
+    @apply lg:text-2xl;
+    
     text-shadow: 
-      1px 1px 2px rgba(0, 0, 0, 0.2),
-      0 0 10px rgba(148, 226, 213, 0.3);
+      1px 1px 2px #000000,
+      0 0 10px var(--purple-main);
   }
-
 
   /* Innovation-focused accent text */
   .text-accent-innovation {
-    @apply text-lg sm:text-xl md:text-2xl;
-    color: var(--soft-coral);
+    color: var(--purple-light);
     font-weight: 600;
     text-align: center;
+    
+    /* Mobile */
+    font-size: 1.125rem; /* 18px */
+    
+    /* Tablet */
+    @apply sm:text-lg md:text-xl;
+    
+    /* Desktop */
+    @apply lg:text-2xl;
+    
     text-shadow: 
-      1px 1px 2px rgba(0, 0, 0, 0.2),
-      0 0 10px rgba(255, 159, 138, 0.3);
+      1px 1px 2px #000000,
+      0 0 10px var(--purple-light);
   }
 
-
-  /* Body text with perfect readability */
+  /* Body text - solid colors only */
   .text-body {
-    @apply text-sm sm:text-base md:text-lg;
-    color: rgba(255, 255, 255, 0.95);
+    color: #ffffff;
     line-height: 1.7;
     text-align: center;
     font-weight: 400;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    
+    /* Mobile */
+    font-size: 0.875rem; /* 14px */
+    
+    /* Tablet */
+    @apply sm:text-base;
+    
+    /* Desktop */
+    @apply md:text-lg;
+    
+    text-shadow: 1px 1px 2px #000000;
   }
 
-
-  /* Secondary text */
+  /* Secondary text - solid colors only */
   .text-secondary {
-    @apply text-xs sm:text-sm md:text-base;
-    color: rgba(255, 255, 255, 0.8);
+    color: #e6e6e6;
     line-height: 1.6;
     text-align: center;
     font-weight: 400;
+    
+    /* Mobile */
+    font-size: 0.75rem; /* 12px */
+    
+    /* Tablet */
+    @apply sm:text-sm;
+    
+    /* Desktop */
+    @apply md:text-base;
   }
 
-
-  /* Gradient text effects with psychology */
+  /* Gradient text effects with purple theme */
   .text-gradient-primary {
     background: linear-gradient(135deg, 
       #ffffff 0%, 
-      var(--mint-aqua) 30%, 
-      var(--ocean-blue) 70%, 
-      #ffffff 100%
+      var(--purple-main) 30%, 
+      var(--purple-dark) 70%, 
+      var(--deep-navy) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -256,12 +380,11 @@
     animation: gradientText 3s ease infinite;
   }
 
-
   .text-gradient-innovation {
     background: linear-gradient(135deg, 
-      var(--soft-coral) 0%, 
-      var(--pale-gold) 50%, 
-      var(--mint-aqua) 100%
+      var(--purple-main) 0%, 
+      var(--purple-light) 50%, 
+      #ffffff 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -270,12 +393,11 @@
     animation: gradientText 4s ease infinite;
   }
 
-
   .text-gradient-trust {
     background: linear-gradient(135deg, 
-      var(--mint-aqua) 0%, 
-      var(--ocean-blue) 50%, 
-      var(--royal-blue) 100%
+      var(--purple-main) 0%, 
+      var(--purple-mid) 50%, 
+      var(--deep-navy) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -284,8 +406,7 @@
     animation: gradientText 3.5s ease infinite;
   }
 
-
-  /* Centered button groups */
+  /* Responsive button groups */
   .button-group {
     display: flex;
     flex-direction: column;
@@ -294,31 +415,55 @@
     gap: 1rem;
     width: 100%;
     
+    /* Tablet: horizontal layout */
     @apply sm:flex-row sm:gap-4;
   }
-
 
   .button-group .btn-responsive {
     width: 100%;
     max-width: 280px;
+    padding: 0.75rem 1.5rem;
+    
+    /* Tablet: auto width */
     @apply sm:w-auto sm:max-w-none;
+    
+    /* Desktop: larger padding */
+    @apply lg:px-8 lg:py-3;
+    
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    color: #ffffff;
   }
 
-
-  /* Enhanced responsive spacing */
+  /* Responsive spacing utilities */
   .section-spacing {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    @apply sm:py-16 md:py-20 lg:py-24;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    
+    /* Tablet */
+    @apply sm:py-12 md:py-16;
+    
+    /* Desktop */
+    @apply lg:py-20 xl:py-24;
   }
-
 
   .content-spacing {
-    margin-bottom: 2rem;
-    @apply sm:mb-8 md:mb-10 lg:mb-12;
+    margin-bottom: 1.5rem;
+    
+    /* Tablet */
+    @apply sm:mb-6 md:mb-8;
+    
+    /* Desktop */
+    @apply lg:mb-10 xl:mb-12;
   }
-}
 
+  /* Spacing utilities */
+  .mb-2 { margin-bottom: 0.5rem; }
+  .mb-4 { margin-bottom: 1rem; }
+  .mb-6 { margin-bottom: 1.5rem; }
+  .mb-8 { margin-bottom: 2rem; }
+}
 
 /* Enhanced loading screen */
 .loading-screen {
@@ -327,11 +472,15 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh; /* Dynamic viewport height */
   background: linear-gradient(135deg, 
-    var(--mint-aqua) 0%, 
-    var(--ocean-blue) 50%, 
+    var(--purple-main) 0%, 
+    var(--purple-mid) 30%,
+    var(--purple-dark) 60%,
     var(--deep-navy) 100%
   );
+  background-size: 400% 400%;
+  animation: psychologyFlow 8s ease infinite;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -341,37 +490,156 @@
   padding: 2rem;
 }
 
-
 .loading-screen.hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-
 .loading-spinner {
   width: 50px;
   height: 50px;
-  border: 4px solid rgba(255, 255, 255, 0.2);
-  border-top: 4px solid var(--mint-aqua);
+  border: 4px solid #cccccc;
+  border-top: 4px solid var(--purple-main);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 2rem;
   
+  /* Tablet */
   @apply sm:w-16 sm:h-16 sm:border-[6px] sm:border-t-[6px];
 }
 
-
 .loading-text {
   color: #ffffff;
-  font-size: 1.25rem;
-  font-weight: 600;
-  text-align: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 
+    2px 2px 4px #000000,
+    0 0 20px var(--purple-main);
   
+  /* Mobile */
+  font-size: 1.25rem;
+  
+  /* Tablet */
   @apply sm:text-xl md:text-2xl;
+  
+  /* Desktop */
+  @apply lg:text-3xl xl:text-4xl;
 }
 
+/* Custom loader with purple theme */
+.custom-loader {
+  width: 60px;
+  height: 60px;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  position: relative;
+  
+  /* Tablet */
+  @apply sm:w-20 sm:h-20;
+  
+  /* Desktop */
+  @apply lg:w-24 lg:h-24;
+  
+  mask: 
+    radial-gradient(transparent 47%, #000 48% 71%, transparent 72%) exclude,
+    conic-gradient(#000 0 0) no-clip;
+  
+  background: conic-gradient(
+    from 0deg,
+    var(--purple-main) 0deg,
+    var(--purple-light) 60deg,
+    var(--purple-mid) 120deg,
+    var(--purple-dark) 180deg,
+    var(--navy-light) 240deg,
+    var(--purple-main) 300deg,
+    var(--purple-main) 360deg
+  );
+  
+  animation: customLoader 1.5s linear infinite;
+  filter: drop-shadow(0 0 20px var(--purple-main));
+}
+
+.custom-loader::before {
+  content: "";
+  position: absolute;
+  inset: 0 35% 70%;
+  border-radius: 50%;
+  
+  background: radial-gradient(
+    circle,
+    #ffffff 0%,
+    var(--purple-main) 50%,
+    var(--deep-navy) 100%
+  );
+  
+  filter: blur(8px);
+  animation: centerPulse 2s ease-in-out infinite;
+}
+
+/* Stats inline for better mobile layout */
+.stats-inline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  
+  /* Tablet */
+  @apply sm:gap-8 sm:p-8;
+  
+  /* Desktop */
+  @apply lg:gap-12 lg:p-12;
+  
+  background: linear-gradient(135deg,
+    var(--purple-main) 0%,
+    var(--deep-navy) 100%
+  );
+  border-radius: 1rem;
+  border: 2px solid var(--purple-light);
+}
+
+.stat-inline-item {
+  text-align: center;
+  min-width: 100px;
+  
+  /* Tablet */
+  @apply sm:min-w-32;
+  
+  /* Desktop */
+  @apply lg:min-w-40;
+}
+
+.stat-inline-number {
+  display: block;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000000, 0 0 10px var(--purple-light);
+  margin-bottom: 0.5rem;
+  
+  /* Mobile */
+  font-size: 1.5rem;
+  
+  /* Tablet */
+  @apply sm:text-2xl md:text-3xl;
+  
+  /* Desktop */
+  @apply lg:text-4xl;
+}
+
+.stat-inline-label {
+  display: block;
+  color: #e6e6e6;
+  text-shadow: 1px 1px 2px #000000;
+  
+  /* Mobile */
+  font-size: 0.75rem;
+  
+  /* Tablet */
+  @apply sm:text-sm;
+  
+  /* Desktop */
+  @apply lg:text-base;
+}
 
 /* Enhanced keyframe animations */
 @keyframes psychologyFlow {
@@ -395,7 +663,6 @@
   }
 }
 
-
 @keyframes gradientText {
   0%, 100% { 
     background-position: 0% 50%;
@@ -405,26 +672,23 @@
   }
 }
 
-
 @keyframes trustPulse {
   0%, 100% { 
     box-shadow: 
-      0 0 0 0 rgba(148, 226, 213, 0.7),
-      0 8px 32px rgba(148, 226, 213, 0.15);
+      0 0 0 0 var(--purple-main),
+      0 8px 32px #1a1a2e;
   }
   70% { 
     box-shadow: 
-      0 0 0 20px rgba(148, 226, 213, 0),
-      0 12px 40px rgba(148, 226, 213, 0.25);
+      0 0 0 20px #2c2f3e,
+      0 12px 40px #0f0f1a;
   }
 }
-
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
 
 @keyframes float {
   0%, 100% { 
@@ -435,81 +699,159 @@
   }
 }
 
-
-/* Mobile-first responsive design */
-@media (max-width: 640px) {
-  .page-container {
-    min-height: 100svh;
-    padding-top: 5rem;
-    padding-bottom: 3rem;
-  }
-  
-  .content-section {
-    gap: 1.5rem;
-  }
-  
-  .glass-card {
-    padding: 1.5rem;
-    margin: 0 0.5rem;
-  }
-  
-  .text-hero {
-    font-size: 2.5rem;
-    line-height: 1.2;
+@keyframes customLoader {
+  to { 
+    rotate: 1turn;
   }
 }
 
+@keyframes centerPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
 
-/* Landscape mobile adjustments */
-@media (max-width: 896px) and (orientation: landscape) {
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  animation: gradient-move 6s ease infinite;
+}
+
+/* Mobile-specific optimizations (iPhone, Android) */
+@media (max-width: 640px) {
   .page-container {
-    padding-top: 3rem;
+    padding-top: 1rem;
     padding-bottom: 2rem;
   }
   
   .content-section {
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+  }
+  
+  .glass-card {
+    margin: 0 0.5rem 1rem 0.5rem;
+  }
+  
+  .stats-inline {
     gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .stat-inline-item {
+    min-width: 80px;
   }
 }
 
+/* Landscape mobile adjustments */
+@media (max-width: 896px) and (orientation: landscape) {
+  .page-container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .content-section {
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 0;
+  }
+  
+  .text-hero {
+    font-size: 2rem;
+  }
+}
 
-/* Tablet optimizations */
+/* Tablet optimizations (iPad, Android tablets) */
 @media (min-width: 641px) and (max-width: 1024px) {
   .content-section {
-    gap: 2.5rem;
+    margin-bottom: 3rem;
+    padding: 2.5rem 0;
   }
   
   .glass-card {
     padding: 2rem;
   }
+  
+  .stats-inline {
+    gap: 2rem;
+    padding: 2rem;
+  }
 }
 
-
-/* Desktop enhancements */
+/* Desktop enhancements (Mac, Windows, Linux) */
 @media (min-width: 1025px) {
   .content-section {
-    gap: 3rem;
+    margin-bottom: 4rem;
+    padding: 3rem 0;
   }
   
   .glass-card:hover {
-    transform: translateY(-10px) scale(1.03);
+    transform: translateY(-8px) scale(1.03);
+  }
+  
+  .stats-inline {
+    gap: 3rem;
+    padding: 3rem;
   }
 }
 
+/* 4K and ultra-wide display optimizations */
+@media (min-width: 1920px) {
+  .page-container {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  
+  .content-section {
+    padding: 4rem 0;
+  }
+}
+
+/* High DPI display optimizations (Retina, etc.) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .glass-card {
+    border-width: 1px;
+  }
+  
+  .text-hero, .text-page-title, .text-section-title {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  .glass-card {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   .glass-card {
-    border-width: 2px;
-    border-color: var(--mint-aqua);
-    background: rgba(0, 0, 0, 0.8);
+    border-width: 3px;
+    border-color: var(--purple-main);
+    background: #000000;
   }
   
   .text-body, .text-secondary {
     color: #ffffff;
   }
 }
-
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
@@ -524,19 +866,28 @@
   }
 }
 
-
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   body {
     background: linear-gradient(135deg, 
-      #2c5f5a 0%,     /* Darker mint-aqua */
-      #1e3a8a 30%,    /* Darker ocean blue */
-      #1e293b 60%,    /* Slate */
-      var(--deep-navy) 100%
+      #5c4980 0%,             /* Dark purple */
+      #3d2f5a 30%,            /* Darker purple */
+      var(--navy-light) 60%,  /* Light navy */
+      var(--deep-navy) 100%   /* Deep navy */
     );
   }
+  
+  .glass-card {
+    background: var(--deep-navy) !important;
+    border: 2px solid var(--purple-main) !important;
+    box-shadow: 0 8px 32px #000000, 0 2px 8px #0f0f1a !important;
+  }
+  
+  .glass-card:hover {
+    background: var(--navy-light) !important;
+    border: 2px solid var(--purple-light) !important;
+  }
 }
-
 
 /* Print styles */
 @media print {
@@ -551,212 +902,8 @@
     box-shadow: none;
   }
 }
-/* ... existing CSS ... */
 
-
-/* Enhanced loading screen */
-.loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(135deg, 
-    var(--mint-aqua) 0%, 
-    var(--ocean-blue) 30%,
-    var(--royal-blue) 60%,
-    var(--deep-navy) 100%
-  );
-  background-size: 400% 400%;
-  animation: psychologyFlow 8s ease infinite;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.8s ease-out;
-  padding: 2rem;
-}
-
-
-.loading-screen.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-
-/* Custom loader with your animation */
-.custom-loader {
-  height: 80px;
-  aspect-ratio: 1;
-  box-sizing: border-box;
-  position: relative;
-  
-  /* Enhanced mask with color psychology */
-  mask: 
-    radial-gradient(transparent 47%, #000 48% 71%, transparent 72%) exclude,
-    conic-gradient(#000 0 0) no-clip;
-  
-  /* Beautiful gradient instead of solid color */
-  background: conic-gradient(
-    from 0deg,
-    var(--mint-aqua) 0deg,
-    var(--soft-coral) 60deg,
-    var(--pale-gold) 120deg,
-    var(--ocean-blue) 180deg,
-    var(--royal-blue) 240deg,
-    var(--mint-aqua) 300deg,
-    var(--mint-aqua) 360deg
-  );
-  
-  animation: customLoader 1.5s linear infinite;
-  
-  /* Enhanced shadow and glow */
-  filter: drop-shadow(0 0 20px rgba(148, 226, 213, 0.6));
-}
-
-
-.custom-loader::before {
-  content: "";
-  position: absolute;
-  inset: 0 35% 70%;
-  border-radius: 50%;
-  
-  /* Glowing center dot */
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(148, 226, 213, 0.8) 50%,
-    rgba(52, 152, 219, 0.6) 100%
-  );
-  
-  filter: blur(8px);
-  animation: centerPulse 2s ease-in-out infinite;
-}
-
-
-.loading-text {
-  color: #ffffff;
-  font-family: 'Poppins', sans-serif;
-  text-shadow: 
-    2px 2px 4px rgba(0, 0, 0, 0.3),
-    0 0 20px rgba(148, 226, 213, 0.4);
-  
-  @apply sm:text-3xl md:text-4xl;
-}
-
-
-/* Custom animations */
-@keyframes customLoader {
-  to { 
-    rotate: 1turn;
-  }
-}
-
-
-@keyframes centerPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-}
-
-
-/* Responsive loader */
-@media (max-width: 640px) {
-  .custom-loader {
-    height: 60px;
-  }
-  
-  .loading-text {
-    font-size: 1.5rem;
-  }
-}
-
-
-@media (min-width: 1024px) {
-  .custom-loader {
-    height: 100px;
-  }
-}
-
-
-/* High performance settings */
-.custom-loader,
-.custom-loader::before {
-  will-change: transform;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-  .custom-loader {
-    animation-duration: 3s;
-  }
-  
-  .custom-loader::before {
-    animation: none;
-  }
-}
-
-
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .custom-loader::before {
-    background: radial-gradient(
-      circle,
-      rgba(148, 226, 213, 0.9) 0%,
-      rgba(52, 152, 219, 0.8) 50%,
-      rgba(255, 255, 255, 0.6) 100%
-    );
-  }
-}
-/* In src/index.css, update the page-container */
-/* In src/index.css, update for responsive navbar heights */
-.page-container {
-  @apply min-h-screen flex flex-col items-center justify-center px-4 py-20;
-  
-  /* Responsive padding-top based on navbar height */
-  padding-top: 5rem;      /* 80px for h-16 on mobile */
-  
-  @apply sm:px-6 md:px-8 lg:px-12;
-  
-  /* Responsive top padding */
-  @apply sm:pt-24;        /* 96px for h-20 on small */
-  @apply md:pt-24;        /* 96px for h-20 on medium */  
-  @apply lg:pt-28;        /* 112px for h-24 on large */
-  @apply xl:pt-32;        /* 128px for h-28 on xl */
-}
-
-
-/* Mobile optimizations */
-@media (max-width: 640px) {
-  .page-container {
-    min-height: 100svh;
-    padding-top: 4.5rem; /* 72px for compact mobile navbar */
-  }
-}
-@keyframes gradient-move {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient {
-  animation: gradient-move 6s ease infinite;
-}
-
-/* Add this to your existing src/index.css file */
-
-/* Add to your existing CSS */
-
+/* Cursor styles */
 * {
   cursor: auto !important;
 }
@@ -777,124 +924,3 @@ input, textarea, select {
 .cursor-grabbing {
   cursor: grabbing !important;
 }
-
-/* Safari Browser Specific Fixes */
-
-/* Safari gradient and animation fix */
-@media not all and (min-resolution:.001dpcm) { 
-  @supports (-webkit-appearance:none) {
-    body {
-      /* Safari-compatible background */
-      background: linear-gradient(135deg, 
-        #94e2d5 0%,     /* Mint-aqua */
-        #a8f5e8 15%,    /* Seafoam */
-        #87ceeb 30%,    /* Sky-blue */
-        #3498db 45%,    /* Ocean-blue */
-        #2980b9 60%,    /* Royal-blue */
-        #1a1a2e 75%,    /* Navy */
-        #16213e 90%,    /* Dark navy */
-        #0f0f23 100%    /* Deep navy */
-      ) !important;
-      
-      background-size: 400% 400% !important;
-      background-attachment: fixed !important;
-      
-      /* Safari-specific animation */
-      -webkit-animation: psychologyFlow 25s ease infinite !important;
-      animation: psychologyFlow 25s ease infinite !important;
-    }
-    
-    /* Safari glass card fallback */
-    .glass-card {
-      background: rgba(148, 226, 213, 0.25) !important;
-      border: 2px solid rgba(148, 226, 213, 0.4) !important;
-      
-      /* Safari backdrop-filter with fallback */
-      -webkit-backdrop-filter: blur(20px) saturate(1.2) !important;
-      backdrop-filter: blur(20px) saturate(1.2) !important;
-      
-      /* Safari shadow fix */
-      -webkit-box-shadow: 
-        0 8px 32px rgba(148, 226, 213, 0.15),
-        0 2px 8px rgba(255, 255, 255, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-      box-shadow: 
-        0 8px 32px rgba(148, 226, 213, 0.15),
-        0 2px 8px rgba(255, 255, 255, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-    }
-    
-    /* Safari text rendering fix */
-    .text-hero, .text-page-title, .text-section-title {
-      -webkit-font-smoothing: antialiased !important;
-      -webkit-text-stroke: 0.01em transparent !important;
-    }
-  }
-}
-
-/* Safari-only CSS using -webkit-appearance */
-@supports (-webkit-appearance: none) and (not (appearance: none)) {
-  body {
-    /* Force Safari to render gradient properly */
-    background: -webkit-linear-gradient(135deg, 
-      #94e2d5 0%, #a8f5e8 15%, #87ceeb 30%, 
-      #3498db 45%, #2980b9 60%, #1a1a2e 75%, 
-      #16213e 90%, #0f0f23 100%
-    ) !important;
-    
-    /* Safari animation keyframes fix */
-    -webkit-animation-name: psychologyFlow !important;
-    -webkit-animation-duration: 25s !important;
-    -webkit-animation-timing-function: ease !important;
-    -webkit-animation-iteration-count: infinite !important;
-  }
-  
-  .glass-card {
-    /* Safari glass effect fallback */
-    background: rgba(148, 226, 213, 0.3) !important;
-    border: 2px solid rgba(148, 226, 213, 0.5) !important;
-    
-    /* Enhanced Safari backdrop-filter */
-    -webkit-backdrop-filter: blur(20px) saturate(150%) brightness(110%) !important;
-  }
-}
-
-/* Safari WebKit keyframes */
-@-webkit-keyframes psychologyFlow {
-  0% { 
-    background: -webkit-linear-gradient(135deg, #94e2d5 0%, #a8f5e8 25%, #87ceeb 50%, #3498db 75%, #2980b9 100%);
-    background-position: 0% 50%;
-  }
-  20% { 
-    background-position: 100% 30%;
-  }
-  40% { 
-    background-position: 50% 100%;
-  }
-  60% { 
-    background-position: 0% 70%;
-  }
-  80% { 
-    background-position: 80% 20%;
-  }
-  100% { 
-    background: -webkit-linear-gradient(135deg, #94e2d5 0%, #a8f5e8 25%, #87ceeb 50%, #3498db 75%, #2980b9 100%);
-    background-position: 0% 50%;
-  }
-}
-
-/* Alternative Safari fix - if above doesn't work */
-.safari-fallback {
-  background: #94e2d5 !important;
-  background: -webkit-linear-gradient(top left, #94e2d5, #3498db, #2980b9, #1a1a2e) !important;
-}
-
-/* Apply Safari fallback class to body via JavaScript */
-/* Add this script tag to your HTML head: */
-/*
-<script>
-if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-  document.body.classList.add('safari-fallback');
-}
-</script>
-*/

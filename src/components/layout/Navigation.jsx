@@ -55,7 +55,7 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-8">
         {/* Compact navbar height for mobile  */}
-        <div className="flex items-center justify-between h-10 sm:h-12 md:h-12 lg:h-14 xl:h-14">
+        <div className="flex items-center justify-between h-8 sm:h-10 md:h-12 lg:h-14 xl:h-14">
           
           {/* Logo Section with Big Logo in Compact Navbar */}
           <div
@@ -67,7 +67,7 @@ const Navigation = () => {
               <img
                 src={betterCallAlpLogo}
                 alt="Better Call ALP Logo"
-                className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain"
+                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-contain"
                 style={{
                   filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))',
                   backgroundColor: 'transparent'
@@ -178,7 +178,7 @@ const Navigation = () => {
               <img
                 src={betterCallAlpLogo}
                 alt="Better Call ALP"
-                className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
+                className="w-12 h-12 sm:w-12 sm:h-12 object-contain"
                 style={{ backgroundColor: 'transparent' }}
               />
               <div className="ml-3 text-left">

@@ -1,40 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover,user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="theme-color" content="#94e2d5" />
-    <title>Better Call ALP – Abhishek Leela Pandey</title>
-    <!-- Critical inline CSS -->
-    <style>
-      :root{--mint-aqua:#94e2d5;--seafoam:#a8f5e8;--sky-blue:#87ceeb;--ocean-blue:#3498db;--royal-blue:#2980b9;--deep-navy:#181825}
-      *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;cursor:auto!important}
-      html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;-webkit-overflow-scrolling:touch;transform:translate3d(0,0,0)}
-      body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto',system-ui,sans-serif;
-        background:linear-gradient(135deg,var(--mint-aqua) 0%,var(--seafoam)15%,var(--sky-blue)30%,var(--ocean-blue)45%,var(--royal-blue)60%,var(--deep-navy)75%,#0f0f23 90%,var(--deep-navy)100%);
-        background-size:400% 400%;background-attachment:scroll;animation:psychologyFlow 25s ease infinite;
-        min-height:100vh;min-height:-webkit-fill-available;color:#fff;overflow-x:hidden;position:relative;
-        -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overscroll-behavior:none}
-      body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,.1)0%,rgba(0,0,0,.3)100%);pointer-events:none;z-index:1;transform:translateZ(0)}
-      @keyframes psychologyFlow{0%{background-position:0% 50%}20%{background-position:100% 30%}40%{background-position:50% 100%}60%{background-position:0% 70%}80%{background-position:80% 20%}100%{background-position:0% 50%}}
-    </style>
-    <script>
-// Safari detection and fallback
-if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-  document.addEventListener('DOMContentLoaded', function() {
-    document.body.style.background = 'linear-gradient(135deg, #94e2d5 0%, #a8f5e8 15%, #87ceeb 30%, #3498db 45%, #2980b9 60%, #1a1a2e 75%, #16213e 90%, #0f0f23 100%)';
-    document.body.style.backgroundSize = '400% 400%';
-    document.body.style.animation = 'psychologyFlow 25s ease infinite';
-  });
-}
-</script>
-
-    <script type="module" src="/src/main.jsx"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#9273c1" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>ALP Portfolio</title>
+  <style>
+    html, body, #root {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+    }
+    body {
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    #root {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 </html>
